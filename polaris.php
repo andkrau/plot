@@ -77,7 +77,7 @@ function requestPolaris($url, $method, $request=null, $headers=[], $secret=null)
 }
 
 function placeHold($item,$card) {
-  global $domain, $staffuser, $staffpass;
+  global $domain, $staffuser, $staffpass, $orgid, $workstationid, $userid;
 
   $data = authenticateStaff($domain, $staffuser, $staffpass);
 
@@ -103,7 +103,7 @@ function placeHold($item,$card) {
 
   $url = '/public/v1/1033/100/1/holdrequest';
 
-  $body = json_encode(array( 'PatronID' => $id, 'BibID' => $item, 'PickupOrgID' => 3, 'WorkstationID' => 58, 'UserID' => 210, 'RequestingOrgID' => 3 ));
+  $body = json_encode(array( 'PatronID' => $id, 'BibID' => $item, 'PickupOrgID' => $orgid, 'WorkstationID' => $workstationid, 'UserID' => userid, 'RequestingOrgID' => $orgid ));
 
   $data = requestPolaris($url, 'POST', $body);
 

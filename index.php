@@ -9,7 +9,7 @@ if ($ini === false) {
 
 if (isset($ini['config'])) {
   $config = $ini['config'];
-  $required = ['base', 'apikey', 'apiid', 'domain', 'staffuser', 'staffpass', 'collection', 'syndetics', 'promo'];
+  $required = ['base', 'apikey', 'apiid', 'domain', 'staffuser', 'staffpass', 'collection', 'syndetics', 'promo', 'workstationid', 'orgid', 'userid'];
   foreach ($required as $key) {
     if (!array_key_exists($key, $config)) {
       http_response_code(500);
