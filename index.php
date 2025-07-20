@@ -69,21 +69,35 @@ if (isset($ini['config'])) {
             $url = $opac . $isbn;
           }
 
-          $isbnParam = 'isbn=%2Fmc.gif';
-          $oclcParam = '';
-          $upcParam = '';
-          if (strlen($isbn)) {
-            $isbnParam = 'isbn=' . $isbn . '%2Fmc.gif';
-          }
-          if (strlen($oclc)) {
-            $oclcParam = '&oclc=' . $oclc;
-          }
-          if (strlen($upc)) {
-            $upcParam = '&upc=' . $upc;
+          $oclcCover = 'items/OCLC' . $oclc . '.jpg';
+          $upcCover = 'items/UPC' . $upc . '.jpg';
+          $isbnCover = 'items/ISBN' . $isbn . '.jpg';
+
+          if (file_exists('public/' . $oclcCover)) {
+            $cover = $oclcCover;
+          } elseif (file_exists('public/' . $upcCover)) {
+            $cover = $upcCover;
+          } elseif (file_exists('public/' . $isbnCover)) {
+            $cover = $isbnCover;
+          } elseif ($syndetics && ($isbn || $upc || $oclc)) {
+            $isbnParam = 'isbn=%2Fmc.gif';
+            $oclcParam = '';
+            $upcParam = '';
+            if (strlen($isbn)) {
+              $isbnParam = 'isbn=' . $isbn . '%2Fmc.gif';
+            }
+            if (strlen($oclc)) {
+              $oclcParam = '&oclc=' . $oclc;
+            }
+            if (strlen($upc)) {
+              $upcParam = '&upc=' . $upc;
+            }
+            $cover = 'https://secure.syndetics.com/index.aspx?' . $isbnParam . $oclcParam . $upcParam . '&client=' . $syndetics . '&nicaption=' . $title;
+          } else {
+            $cover = 'items/default.png';
           }
 
           $description = $row->Description;
-          $cover = 'https://secure.syndetics.com/index.aspx?' . $isbnParam . $oclcParam . $upcParam . '&client=' . $syndetics . '&nicaption=' . $title;
           $json = json_encode($row);
           $status = 'unavailable';
           if ($row->LocalItemsIn > 0 && $row->CurrentHoldRequests == 0) {
