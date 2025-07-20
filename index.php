@@ -80,7 +80,7 @@ if (isset($ini['config'])) {
           } elseif (file_exists('public/' . $isbnCover)) {
             $cover = $isbnCover;
           } elseif ($syndetics && ($isbn || $upc || $oclc)) {
-            $isbnParam = 'isbn=%2Fmc.gif';
+            $isbnParam = 'isbn=%2Flc.gif';
             $oclcParam = '';
             $upcParam = '';
             if (strlen($isbn)) {
