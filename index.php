@@ -21,9 +21,6 @@ if (isset($ini['config'])) {
   http_response_code(500);
   die("The section [config] is missing in config file.");
 }
-
-header('Access-Control-Allow-Methods: GET, POST');
-
 ?>
 
 <?php if ($_SERVER['REQUEST_METHOD'] === 'GET'): ?>
