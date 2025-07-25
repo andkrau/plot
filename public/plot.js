@@ -25,12 +25,13 @@ function rotateImages() {
   allImages[i].src = 'images/' + allImages[i].dataset.image + Math.ceil(Math.random() * 5) + '.jpg';
 }
 
-function reset() {
+function reset(delay = 180000) {
   clearTimeout(timeout);
-  console.log("Interval reset!");
+  console.log(`[${new Date().toLocaleTimeString()}] Timeout reset!`);
   timeout = setTimeout(function(){
+    console.log(`[${new Date().toLocaleTimeString()}] Reloading...`);
     window.location.replace(window.location.origin + window.location.pathname);
-  } , 180000);
+  } , delay);
 }
 
   function createDescription(el) {
@@ -48,7 +49,7 @@ function reset() {
         var id = el.dataset.id;
         var call = el.dataset.call;
         if(window.top!=window.self) {
-	  window.open(url, "_blank");
+          window.open(url, "_blank");
           return;
         }
         if (summary.length > 420 ) {
@@ -202,6 +203,9 @@ window.onkeyup = function(){
   reset();
 };
 
+if (window.location.search) {
+  reset(60000);
+}
 
 var imageInterval = setInterval(checkImages, 1000);
 
