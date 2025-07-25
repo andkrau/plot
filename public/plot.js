@@ -29,7 +29,7 @@ function reset() {
   clearTimeout(timeout);
   console.log("Interval reset!");
   timeout = setTimeout(function(){
-    window.location.replace("/plot");
+    window.location.replace(window.location.origin + window.location.pathname);
   } , 180000);
 }
 
