@@ -25,7 +25,7 @@
   }
   @keyframes grow {
     0%   {font-size: 0}
-    100% {font-size: 100px}
+    100% {font-size: 72px}
   }
   @keyframes modal {
     0%   {opacity: 0;}
@@ -108,7 +108,7 @@
   }
   #title {
     margin-left: 32px;
-    font-size: 100px;
+    font-size: 72px;
     display: inline-block;
     line-height: 256px;
     vertical-align: top;
