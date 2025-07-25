@@ -9,7 +9,7 @@ if ($ini === false) {
 
 if (isset($ini['config'])) {
   $config = $ini['config'];
-  $required = ['base', 'apikey', 'apiid', 'domain', 'staffuser', 'staffpass', 'collection', 'syndetics', 'promo', 'workstationid', 'orgid', 'userid'];
+  $required = ['base', 'apikey', 'apiid', 'domain', 'staffuser', 'staffpass', 'collection', 'syndetics', 'promo', 'workstationid', 'orgid', 'userid', 'opac'];
   foreach ($required as $key) {
     if (!array_key_exists($key, $config)) {
       http_response_code(500);
@@ -51,7 +51,6 @@ if (isset($ini['config'])) {
       <div class="paragraph paragraph--type--book-river">
         <?php foreach ($items->BibSearchRows as $row): ?>
           <?php
-          $opac = '';
           $oclc = $row->OCLC;
           $isbn = $row->ISBN;
           $upc = $row->UPC;
