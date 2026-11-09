@@ -144,7 +144,7 @@ function placeHoldCallback(card) {
 
 function holdResult(result) {
   var el = document.querySelector(".hold");
-  var call = el.dataset.call;
+  var call = decodeURIComponent(el.dataset.call);
   if (isNaN(result)) {
     //alert(result);
     blurt('Error', result,'error');

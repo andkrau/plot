@@ -104,7 +104,7 @@ if (isset($ini['config'])) {
           }
           ?>
           <div class="field__item"
-             data-call="<?= urlencode($call) ?>"
+             data-call="<?= rawurlencode($call) ?>"
              data-id="<?= $id ?>"
              data-title="<?= htmlentities($title) ?>"
              data-cover="<?= $cover ?>"
